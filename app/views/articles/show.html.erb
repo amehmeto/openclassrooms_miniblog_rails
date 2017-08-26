@@ -1,0 +1,20 @@
+<h1><%= @article.title %></h1>
+<p><%= @article.content %></p>
+<p><a href="/">Revenir a la page d'accueil</a></p>
+<br />
+
+<p>Commentaires</p>
+  <%= form_tag "/articles/#{@article.id}", method: "post" do %>
+    <p><label for="author">Auteur : </label><input type="text" name="author" /></p>
+    <p>
+      <label for="content">Commentaire : </label><br />
+        <textarea name="content" id="content"></textarea>
+    </p>
+    <input type="submit" value="Commenter" />
+  <% end %>
+  
+  <% @comments.each do |com| %>
+    <% if com.article_id == @article.id %>
+      <p><strong><%= com.author %> : </strong> <%= com.content %></p>
+    <% end %>
+  <% end %>

@@ -1,0 +1,10 @@
+<h1>Page d'accueil</h1>
+<br />
+<%= paginate @articles %>
+<br />
+<% @articles.each do |art| %>
+  <p><a href="/articles/<%= art.id %>"><%= art.id.to_s + " - " + art.title %></a></p>
+<% end %>
+<br />
+<%= paginate @articles %>
+<br />
